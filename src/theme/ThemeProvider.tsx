@@ -3,8 +3,17 @@ import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/st
 import ThemeContext from './themeContext';
 import { darkThemeConfig, lightThemeConfig } from './themeConfig';
 
+const COLOR_SCHEME = 'COLOR_SCHEME'
+const getColorScheme = () => {
+  const colorScheme = localStorage.getItem(COLOR_SCHEME)
+  if (colorScheme === 'light' || colorScheme === 'dark')
+    return colorScheme
+  else
+    return 'dark'
+}
+
 const ThemeProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const [mode, setMode] = React.useState<'light' | 'dark'>(getColorScheme);
 
   const toggleMode = () => {
     setMode(mode === 'light' ? 'dark' : 'light');
@@ -12,6 +21,7 @@ const ThemeProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) =
 
   const theme = React.useMemo(
     () => {
+      localStorage.setItem(COLOR_SCHEME, mode)
       if (mode === 'light') {
         return createTheme(lightThemeConfig)
       }
