@@ -1,6 +1,31 @@
 import { ThemeOptions } from '@mui/material/styles';
+import { deepmerge } from '@mui/utils';
+const basicThemeConfig: ThemeOptions = {
+  typography: {
+    fontFamily: [
+      'Nunito Sans',
+      'sans-serif',
+      '-apple-system',
+    ].join(','),
+    h1: {
+      fontSize: '1rem',
+      fontWeight: 600,
+      '@media (min-width:600px)': {
+        fontSize: '1.5rem',
+      },
+    },
+    body1: {
+      fontSize: 16,
+      // fontWeight: 300,
+    },
+    body2: {
+      fontSize: 14,
+      // fontWeight: 300,
+    },
+  },
+}
 
-const darkThemeConfig: ThemeOptions = {
+const darkThemeConfig: ThemeOptions = deepmerge(basicThemeConfig, {
   palette: {
     mode: 'dark',
     primary: {
@@ -13,9 +38,9 @@ const darkThemeConfig: ThemeOptions = {
       primary: 'hsl(0, 0%, 100%)', // White (Dark Mode Text)
     },
   },
-}
+})
 
-const lightThemeConfig: ThemeOptions = {
+const lightThemeConfig: ThemeOptions = deepmerge(basicThemeConfig, {
   palette: {
     mode: 'light',
     primary: {
@@ -31,6 +56,6 @@ const lightThemeConfig: ThemeOptions = {
       active: 'hsl(0, 0%, 100%)', // White (Light Mode Elements)
     },
   },
-}
+})
 
 export { darkThemeConfig, lightThemeConfig };
