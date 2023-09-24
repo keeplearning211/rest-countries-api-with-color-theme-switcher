@@ -7,6 +7,8 @@ import {
 } from "react-router-dom"
 import Home from "./pages/Home"
 import Country from "./pages/Country"
+import ThemeProvider from "./theme/ThemeProvider"
+import Header from "./components/Header"
 
 const router = createBrowserRouter([
   {
@@ -28,12 +30,12 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="app-container">
-      <header>
-        <h1>Where in the world?</h1>
-      </header>
-      <Outlet />
-    </div>
+    <ThemeProvider>
+      <div className="app-container">
+        <Header />
+        <Outlet />
+      </div>
+    </ThemeProvider>
   )
 }
 
