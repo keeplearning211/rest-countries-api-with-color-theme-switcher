@@ -1,10 +1,11 @@
 import React from 'react';
-import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import ThemeContext from './themeContext';
-import { darkThemeConfig, lightThemeConfig } from './themeConfig';
+import useCustomizeTheme from './useCustomizeTheme';
 
+export type ThemeType = 'light' | 'dark';
 const COLOR_SCHEME = 'COLOR_SCHEME'
-const getColorScheme = () => {
+const getColorScheme = (): ThemeType => {
   const colorScheme = localStorage.getItem(COLOR_SCHEME)
   if (colorScheme === 'light' || colorScheme === 'dark')
     return colorScheme
@@ -13,25 +14,13 @@ const getColorScheme = () => {
 }
 
 const ThemeProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  const [mode, setMode] = React.useState<'light' | 'dark'>(getColorScheme);
+  const [mode, setMode] = React.useState<ThemeType>(getColorScheme);
 
   const toggleMode = () => {
     setMode(mode === 'light' ? 'dark' : 'light');
   };
 
-  const theme = React.useMemo(
-    () => {
-      localStorage.setItem(COLOR_SCHEME, mode)
-      if (mode === 'light') {
-        return createTheme(lightThemeConfig)
-      }
-      else {
-        return createTheme(darkThemeConfig)
-      }
-    },
-    [mode],
-  );
-
+  const theme = useCustomizeTheme(mode)
 
   return (
     <ThemeContext.Provider value={{ toggleMode }}>

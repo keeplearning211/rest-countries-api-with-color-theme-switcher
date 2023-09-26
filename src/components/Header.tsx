@@ -26,7 +26,7 @@ function Header() {
           <IconButton sx={{ ml: 1 }} onClick={toggleMode} color="inherit">
             {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
-          <Typography component="span" variant='body2' sx={{ textTransform: 'capitalize' }}>
+          <Typography component="span" variant='body2' sx={{ textTransform: 'capitalize', fontWeight: 600 }}>
             {theme.palette.mode} mode
           </Typography>
         </Box>

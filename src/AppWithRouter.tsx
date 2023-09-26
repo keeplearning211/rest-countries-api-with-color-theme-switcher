@@ -4,10 +4,11 @@ import {
   // Route,
   Outlet,
 } from "react-router-dom"
-import Home from "./pages/Home"
+import CountryList from "./pages/CountryList"
 import Country from "./pages/Country"
 import ThemeProvider from "./theme/ThemeProvider"
 import Header from "./components/Header"
+import { Paper } from "@mui/material"
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <CountryList />,
       },
       {
         path: "/country",
@@ -26,14 +27,13 @@ const router = createBrowserRouter([
   },
 ])
 
-
 function App() {
   return (
     <ThemeProvider>
-      <div className="app-container">
+      <Paper >
         <Header />
         <Outlet />
-      </div>
+      </Paper>
     </ThemeProvider>
   )
 }
