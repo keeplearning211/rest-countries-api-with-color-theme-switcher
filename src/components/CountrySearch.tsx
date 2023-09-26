@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     width: 400,
-    padding: theme.spacing(0.25, 0.5),
+    padding: theme.spacing(0.25, 0),
     backgroundColor: `${theme.palette.background.default} !important`
   },
   iconButton: {

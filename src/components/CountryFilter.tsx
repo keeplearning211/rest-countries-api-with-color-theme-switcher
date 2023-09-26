@@ -7,14 +7,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     display: 'flex',
     alignItems: 'center',
-    width: 300,
-    padding: theme.spacing(0.25, 0.5)
+    width: 200,
+    padding: theme.spacing(0.25, 0)
   },
   iconButton: {
     padding: theme.spacing(1)
   },
   select: {
-    marginLeft: theme.spacing(1),
+    // marginLeft: theme.spacing(1),
     flex: 1,
     backgroundColor: theme.palette.background.default,
     fontWeight: 600,
