@@ -8,17 +8,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     width: 200,
-    padding: theme.spacing(0.25, 0)
   },
   iconButton: {
     padding: theme.spacing(1)
   },
   select: {
-    // marginLeft: theme.spacing(1),
     flex: 1,
     backgroundColor: theme.palette.background.default,
     fontWeight: 600,
     padding: theme.spacing(0, 2),
+    '& .MuiSelect-select': {
+      paddingRight: '0px !important',
+    },
   },
 }))
 

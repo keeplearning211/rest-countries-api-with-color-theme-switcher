@@ -4,6 +4,7 @@ import CountrySearch from "../components/CountrySearch";
 import CountryFilter from "../components/CountryFilter";
 import CountryCard from "../components/CountryCard";
 import countries from "./mockData";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -17,6 +18,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   controlBox: {
     display: "flex",
     justifyContent: "space-between",
+    gap: 16,
+    flexWrap: "wrap",
   },
   countriesList: {
     display: "flex",
@@ -39,7 +42,9 @@ function CountryList() {
       <Box className={classes.countriesList}>
         {
           countries.length && countries.map(country => (
-            <CountryCard key={country.name} country={country} />
+            <Link to={`/country/${country.name}`} key={country.name}>
+              <CountryCard country={country} />
+            </Link>
           ))
         }
       </Box>
