@@ -4,7 +4,7 @@ import ThemeContext from './themeContext';
 import useCustomizeTheme from './useCustomizeTheme';
 
 export type ThemeType = 'light' | 'dark';
-const COLOR_SCHEME = 'COLOR_SCHEME'
+export const COLOR_SCHEME = 'COLOR_SCHEME'
 const getColorScheme = (): ThemeType => {
   const colorScheme = localStorage.getItem(COLOR_SCHEME)
   if (colorScheme === 'light' || colorScheme === 'dark')

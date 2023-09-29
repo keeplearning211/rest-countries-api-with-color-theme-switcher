@@ -1,12 +1,26 @@
 import { Box, IconButton, useTheme, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ThemeContext from '../theme/themeContext'
 // import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import { COLOR_SCHEME } from '../theme/ThemeProvider';
 function Header() {
   const theme = useTheme();
   const { toggleMode } = React.useContext(ThemeContext);
+  useEffect(() => {
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === COLOR_SCHEME && toggleMode) {
+        return toggleMode()
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [toggleMode]);
   return (
     <header>
       <Box
