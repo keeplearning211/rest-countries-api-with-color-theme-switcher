@@ -1,10 +1,28 @@
 import { Grid, Typography, Button, Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { country as countryData } from './mockData';
+import { useNavigate, useParams } from 'react-router-dom';
+// import { country as countryData } from './mockData';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { useGetCountryByCodeQuery } from '../features/api/apiSlice';
 function Country() {
-  const country = countryData
   const navigate = useNavigate()
+
+  const { code } = useParams(); // Get the country name from the URL parameters
+
+  // Use the hook to fetch the country data
+  const { data: country, error, isLoading } = useGetCountryByCodeQuery(code ?? '');
+  // console.log('country', country);
+
+  // Handle loading and error states
+  if (isLoading) return <div>Loading...</div>;
+  if (error) {
+    console.log('error loading country', error)
+    return <div>Error</div>
+  }
+
+  if (!country) {
+    console.log('error loading country', error)
+    return <div>no country</div>
+  }
 
   return (
     <Box sx={{
@@ -28,19 +46,27 @@ function Country() {
       </Button>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <img src={country.flag} alt={`Flag of ${country.name}`} style={{ width: '100%' }} />
+          <img src={country?.flags.svg} alt={`Flag of ${country?.name.common}`} style={{ width: '100%' }} />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography variant="h2">{country.name}</Typography>
-          <Typography>Native Name: {country.nativeName}</Typography>
-          <Typography>Population: {country.population}</Typography>
-          <Typography>Region: {country.region}</Typography>
-          <Typography>Sub Region: {country.subregion}</Typography>
-          <Typography>Capital: {country.capital}</Typography>
-          <Typography>Top Level Domain: {country.topLevelDomain}</Typography>
-          <Typography>Currencies: {country.currencies.map(currency => currency.name).join(', ')}</Typography>
-          <Typography>Languages: {country.languages.map(language => language.name).join(', ')}</Typography>
-          <Typography>Border Countries: {country.borders.join(', ')}</Typography>
+        <Grid item xs={12} md={6} container>
+          <Grid item xs={12} container>
+            <Grid item>
+              <Typography variant="h2">{country?.name.common}</Typography>
+              <Typography>Native Name: {country?.name.native}</Typography>
+              <Typography>Population: {country?.population}</Typography>
+              <Typography>Region: {country?.region}</Typography>
+              <Typography>Sub Region: {country?.subregion}</Typography>
+            </Grid>
+            <Grid item>
+              <Typography>Capital: {country?.capital}</Typography>
+              <Typography>Top Level Domain: {country?.topLevelDomain}</Typography>
+              <Typography>Currencies: {country.currencies}</Typography>
+              <Typography>Languages: {country.languages}</Typography>
+            </Grid>
+          </Grid>
+          <Grid item>
+            {country.borders.length ? <Typography>Border Countries: {country.borders.join(', ')}</Typography> : null}
+          </Grid>
         </Grid>
       </Grid>
     </Box>

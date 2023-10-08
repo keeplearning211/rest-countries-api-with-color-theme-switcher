@@ -3,8 +3,9 @@ import makeStyles from '@mui/styles/makeStyles';
 import CountrySearch from "../components/CountrySearch";
 import CountryFilter from "../components/CountryFilter";
 import CountryCard from "../components/CountryCard";
-import countries from "./mockData";
 import { Link } from "react-router-dom";
+import { useGetAllCountriesQuery } from "../features/api/apiSlice";
+import { useMemo, useState } from "react";
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -31,18 +32,54 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function CountryList() {
   const classes = useStyles()
-  console.log('countryList', countries);
+  const [searchValue, setSearchValue] = useState('')
+  const [filterValue, setFilterValue] = useState('')
+  const { data: countries, error, isLoading } = useGetAllCountriesQuery();
+
+  const filteredCountries = useMemo(() => {
+    if (!countries) return [];
+
+    return countries.filter(country => {
+      const nameMatches = searchValue
+        ? country.name?.common?.toLowerCase().includes(searchValue.toLowerCase())
+        : true;
+
+      const regionMatches = filterValue
+        ? country.region?.toLowerCase() === filterValue.toLowerCase()
+        : true;
+
+      return nameMatches && regionMatches;
+    });
+  }, [countries, searchValue, filterValue]);
+
+  const handleSearch = (value: string) => {
+    setSearchValue(value);
+  };
+
+  const handleFilter = (value: string) => {
+    setFilterValue(value);
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    console.log('get all countries error', error)
+
+    return <div>Error!</div>
+  }
 
   return (
     <Paper className={classes.paper}>
       <Box className={classes.controlBox}>
-        <CountrySearch />
-        <CountryFilter />
+        <CountrySearch onSearch={handleSearch} />
+        <CountryFilter onFilter={handleFilter} filterValue={filterValue} />
       </Box>
       <Box className={classes.countriesList}>
         {
-          countries.length && countries.map(country => (
-            <Link to={`/country/${country.name}`} key={country.name}>
+          filteredCountries?.length && filteredCountries.map(country => (
+            <Link to={`/country/${country.cca3}`} key={country.cca3}>
               <CountryCard country={country} />
             </Link>
           ))

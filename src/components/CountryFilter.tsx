@@ -1,6 +1,6 @@
 import { Theme, Select, MenuItem, SelectChangeEvent, Paper, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useState } from 'react';
+// import { useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -23,14 +23,24 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-function CountryFilter() {
+interface CountryFilterProps {
+  onFilter: (filterValue: string) => void;
+  filterValue: string;
+}
+
+function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
   const classes = useStyles();
   const theme = useTheme()
-  const [region, setRegion] = useState('');
+  // const [region, setRegion] = useState('');
+
+  // const handleRegionChange = (event: SelectChangeEvent<string>) => {
+  //   setRegion(event.target.value);
+  // };
+
 
   const handleRegionChange = (event: SelectChangeEvent<string>) => {
-    setRegion(event.target.value as string);
-  };
+    onFilter(event.target.value)
+  }
   return (
     <Paper
       className={classes.paper}
@@ -38,7 +48,7 @@ function CountryFilter() {
       <Select
         className={classes.select}
         IconComponent={() => <KeyboardArrowDownIcon sx={{ color: theme.palette.text.secondary }} />}
-        value={region}
+        value={filterValue}
         onChange={handleRegionChange}
         displayEmpty
         inputProps={{ 'aria-label': 'Filter by Region' }}
@@ -59,7 +69,7 @@ function CountryFilter() {
         }}
       >
         <MenuItem value={'Africa'}>Africa</MenuItem>
-        <MenuItem value={'America'}>America</MenuItem>
+        <MenuItem value={'Americas'}>Americas</MenuItem>
         <MenuItem value={'Asia'}>Asia</MenuItem>
         <MenuItem value={'Europe'}>Europe</MenuItem>
         <MenuItem value={'Oceania'}>Oceania</MenuItem>

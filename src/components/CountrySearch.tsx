@@ -30,19 +30,22 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const TIME_OUT = 300;
 
-function CountrySearch() {
+interface CountrySearchProps {
+  onSearch: (searchValue: string) => void;
+}
+
+function CountrySearch({ onSearch }: CountrySearchProps) {
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const debouncedInputValue = useDebounce(inputValue, TIME_OUT);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
+    setInputValue(event.target.value)
+  }
 
   useEffect(() => {
-    console.log('debouncedInputValue', debouncedInputValue);
-
-  }, [debouncedInputValue])
+    onSearch(debouncedInputValue)
+  }, [debouncedInputValue, onSearch])
 
   return (
     <Paper

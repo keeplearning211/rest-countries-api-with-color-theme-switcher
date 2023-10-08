@@ -1,24 +1,17 @@
 // components/CountryCard.tsx
 import { Box, Card, CardContent, Typography, useTheme } from '@mui/material';
-
-interface Country {
-  name: string;
-  population: number;
-  region: string;
-  capital: string;
-  flag: string;
-}
+import { CountryGeneral } from '../type'
 
 interface CountryCardProps {
-  country: Country;
+  country: CountryGeneral;
 }
 
 function CountryCard({ country }: CountryCardProps) {
   const theme = useTheme()
 
-  const clickHandler = () => {
-    console.log('countryName', country.name);
-  }
+  // const clickHandler = () => {
+  //   console.log('countryName', country.name);
+  // }
 
   return (
     <Card
@@ -35,14 +28,14 @@ function CountryCard({ country }: CountryCardProps) {
         backgroundColor: 'background.default',
         borderRadius: theme.spacing(1),
       }}
-      onClick={clickHandler}
+    // onClick={clickHandler}
     >
       <CardContent
         sx={{
           padding: 0,
           cursor: 'pointer',
         }}>
-        <img src={country.flag} alt={country.name} style={{ width: '100%', height: 158 }} />
+        <img src={country.flags.svg} alt={country.name.common} style={{ width: '100%', height: 158 }} />
         <Box
           sx={{
             padding: theme.spacing(3, 2.5),
@@ -50,7 +43,7 @@ function CountryCard({ country }: CountryCardProps) {
             gap: theme.spacing(3)
           }}>
           <Typography variant="h5" component="div">
-            {country.name}
+            {country.name.common}
           </Typography>
           <Box sx={{
             display: 'grid',
