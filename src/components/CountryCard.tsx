@@ -1,5 +1,5 @@
 // components/CountryCard.tsx
-import { Box, Card, CardContent, Typography, useTheme } from '@mui/material';
+import { Box, Card, CardContent, Typography, useTheme } from '@mui/material'
 import { CountryGeneral } from '../type'
 
 interface CountryCardProps {
@@ -8,10 +8,6 @@ interface CountryCardProps {
 
 function CountryCard({ country }: CountryCardProps) {
   const theme = useTheme()
-
-  // const clickHandler = () => {
-  //   console.log('countryName', country.name);
-  // }
 
   return (
     <Card
@@ -65,7 +61,7 @@ function CountryCard({ country }: CountryCardProps) {
         </Box>
       </CardContent>
     </Card>
-  );
+  )
 }
 
-export default CountryCard;
+export default CountryCard

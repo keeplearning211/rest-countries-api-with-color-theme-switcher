@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { CountryDetail, CountryGeneral, CountryDetailResponse } from '../../type';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { CountryDetail, CountryGeneral, CountryDetailResponse } from '../../type'
 
 export const apiSlice = createApi({
   reducerPath: 'countriesApi',
@@ -13,27 +13,26 @@ export const apiSlice = createApi({
       transformResponse: (responseData: CountryDetailResponse) => {
         try {
           const country = parseCountryDetailResponse(responseData)
-          console.log("🚀 ~ file: apiSlice.ts:29 ~ country:", country)
           return country
         } catch (error) {
-          console.log("🚀 ~ file: apiSlice.ts:33 ~ error:", error)
+          console.log('🚀 ~ file: apiSlice.ts:33 ~ error:', error)
           return null
         }
       }
     }),
   }),
-});
+})
 
 export const { useGetAllCountriesQuery, useGetCountryByCodeQuery } = apiSlice
 
 function parseCountryDetailResponse(responseData: CountryDetailResponse): CountryDetail {
   // Extract the first native name
-  const nativeNameKey = Object.keys(responseData.name.nativeName)[0];
-  const nativeName = responseData.name.nativeName[nativeNameKey].official;
+  const nativeNameKey = Object.keys(responseData.name.nativeName)[0]
+  const nativeName = responseData.name.nativeName[nativeNameKey].official
 
   // Convert the currencies and languages records into arrays
-  const currencies = Object.values(responseData.currencies).map(currency => currency.name);
-  const languages = Object.values(responseData.languages).join(', ');
+  const currencies = Object.values(responseData.currencies).map(currency => currency.name)
+  const languages = Object.values(responseData.languages).join(', ')
 
   // Construct the CountryDetail object
   const countryDetail: CountryDetail = {
@@ -45,7 +44,7 @@ function parseCountryDetailResponse(responseData: CountryDetailResponse): Countr
     topLevelDomain: responseData.tld.join(', '),
     currencies: currencies,
     languages: languages,
-  };
+  }
 
-  return countryDetail;
+  return countryDetail
 }

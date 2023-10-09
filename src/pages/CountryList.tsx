@@ -1,18 +1,18 @@
-import { Box, Theme } from "@mui/material"
-import makeStyles from '@mui/styles/makeStyles';
-import CountrySearch from "../components/CountrySearch";
-import CountryFilter from "../components/CountryFilter";
-import CountryCard from "../components/CountryCard";
-import { Link } from "react-router-dom";
-import { useGetAllCountriesQuery } from "../features/api/apiSlice";
-import { useMemo, useState } from "react";
+import { Box, Theme } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import CountrySearch from '../components/CountrySearch'
+import CountryFilter from '../components/CountryFilter'
+import CountryCard from '../components/CountryCard'
+import { Link } from 'react-router-dom'
+import { useGetAllCountriesQuery } from '../features/api/apiSlice'
+import { useMemo, useState } from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
-    minHeight: "90vh",
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column",
+    minHeight: '90vh',
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
     padding: theme.spacing(2, 8),
     gap: theme.spacing(6),
     [theme.breakpoints.down('md')]: {
@@ -20,55 +20,55 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   controlBox: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
     gap: 16,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
   countriesList: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
     gap: theme.spacing(9),
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       padding: theme.spacing(0, 4)
     },
   }
-}));
+}))
 
 function CountryList() {
   const classes = useStyles()
   const [searchValue, setSearchValue] = useState('')
   const [filterValue, setFilterValue] = useState('')
-  const { data: countries, error, isLoading } = useGetAllCountriesQuery();
+  const { data: countries, error, isLoading } = useGetAllCountriesQuery()
 
   const filteredCountries = useMemo(() => {
-    if (!countries) return [];
+    if (!countries) return []
 
     return countries.filter(country => {
       const nameMatches = searchValue
         ? country.name?.common?.toLowerCase().includes(searchValue.toLowerCase())
-        : true;
+        : true
 
       const regionMatches = filterValue
         ? country.region?.toLowerCase() === filterValue.toLowerCase()
-        : true;
+        : true
 
-      return nameMatches && regionMatches;
-    });
-  }, [countries, searchValue, filterValue]);
+      return nameMatches && regionMatches
+    })
+  }, [countries, searchValue, filterValue])
 
   const handleSearch = (value: string) => {
-    setSearchValue(value);
-  };
+    setSearchValue(value)
+  }
 
   const handleFilter = (value: string) => {
-    setFilterValue(value);
-  };
+    setFilterValue(value)
+  }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   if (error) {

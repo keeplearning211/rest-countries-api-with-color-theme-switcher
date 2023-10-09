@@ -1,25 +1,20 @@
-import { Typography, Button, Box } from '@mui/material';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Typography, Button, Box } from '@mui/material'
+import { useNavigate, useParams } from 'react-router-dom'
 // import { country as countryData } from './mockData';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { useGetCountryByCodeQuery } from '../features/api/apiSlice';
-import CountryInfoPiece from '../components/CountryInfoPiece';
-import BordersCountryInfoPiece from '../components/BordersCountryInfoPiece';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
+import { useGetCountryByCodeQuery } from '../features/api/apiSlice'
+import CountryInfoPiece from '../components/CountryInfoPiece'
+import BordersCountryInfoPiece from '../components/BordersCountryInfoPiece'
 function Country() {
   const navigate = useNavigate()
-  const { code } = useParams();
-  const { data: country, error, isLoading } = useGetCountryByCodeQuery(code ?? '');
+  const { code } = useParams()
+  const { data: country, error, isLoading } = useGetCountryByCodeQuery(code ?? '')
 
   // Handle loading and error states
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>
   if (error) {
-    console.log('error loading country', error)
+    console.log('get country error', error)
     return <div>Error</div>
-  }
-
-  if (!country) {
-    console.log('error loading country', error)
-    return <div>no country</div>
   }
 
   return (
@@ -67,7 +62,7 @@ function Country() {
               gap: '8px',
               gridTemplateColumns: { xs: 'unset', md: '1fr 1fr' }
             }}>
-            <Box data-test-name='info-peace-group-1'
+            <Box data-test-name="info-peace-group-1"
               sx={{
                 display: 'flex',
                 flexDirection: 'column',

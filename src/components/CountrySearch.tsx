@@ -1,8 +1,8 @@
-import { InputBase, IconButton, Theme, Paper } from '@mui/material';
-import { Search as SearchIcon } from '@mui/icons-material';
-import { makeStyles } from '@mui/styles';
-import { useEffect, useState } from 'react';
-import { useDebounce } from '../app/hooks';
+import { InputBase, IconButton, Theme, Paper } from '@mui/material'
+import { Search as SearchIcon } from '@mui/icons-material'
+import { makeStyles } from '@mui/styles'
+import { useEffect, useState } from 'react'
+import { useDebounce } from '../app/hooks'
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -28,16 +28,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-const TIME_OUT = 300;
+const TIME_OUT = 300
 
 interface CountrySearchProps {
   onSearch: (searchValue: string) => void;
 }
 
 function CountrySearch({ onSearch }: CountrySearchProps) {
-  const classes = useStyles();
-  const [inputValue, setInputValue] = useState('');
-  const debouncedInputValue = useDebounce(inputValue, TIME_OUT);
+  const classes = useStyles()
+  const [inputValue, setInputValue] = useState('')
+  const debouncedInputValue = useDebounce(inputValue, TIME_OUT)
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value)
@@ -66,7 +66,7 @@ function CountrySearch({ onSearch }: CountrySearchProps) {
         onChange={handleInputChange}
       ></InputBase>
     </Paper>
-  );
+  )
 }
 
-export default CountrySearch;
+export default CountrySearch

@@ -1,6 +1,6 @@
-import { Box, Chip, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { useGetCountryByCodeQuery } from '../features/api/apiSlice';
+import { Box, Chip, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { useGetCountryByCodeQuery } from '../features/api/apiSlice'
 
 interface BordersCountryInfoPieceProps {
   codes: string[] | undefined;
@@ -8,7 +8,7 @@ interface BordersCountryInfoPieceProps {
 
 function BordersCountryInfoPiece({ codes }: BordersCountryInfoPieceProps) {
   if (!codes || codes.length === 0) {
-    return null;
+    return null
   }
 
   return (
@@ -18,7 +18,7 @@ function BordersCountryInfoPiece({ codes }: BordersCountryInfoPieceProps) {
       flexWrap: 'wrap',
       alignItems: 'center'
     }}>
-      <Typography variant='body2' sx={{ fontWeight: 800 }}>Border Countries:</Typography>
+      <Typography variant="body2" sx={{ fontWeight: 800 }}>Border Countries:</Typography>
       <Box sx={{
         display: 'flex',
         gap: 2,
@@ -31,10 +31,10 @@ function BordersCountryInfoPiece({ codes }: BordersCountryInfoPieceProps) {
         }
       </Box>
     </Box>
-  );
+  )
 }
 
-export default BordersCountryInfoPiece;
+export default BordersCountryInfoPiece
 
 interface CountryChipProps {
   code: string

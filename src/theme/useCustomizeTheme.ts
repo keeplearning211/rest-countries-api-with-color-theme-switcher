@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { ThemeType } from './ThemeProvider'
-import { darkTheme, lightTheme } from './CustomizeTheme';
+import { darkTheme, lightTheme } from './CustomizeTheme'
 
 const COLOR_SCHEME = 'COLOR_SCHEME'
 
@@ -19,8 +19,8 @@ function useCustomizeTheme(themeType: ThemeType) {
       }
     },
     [themeType],
-  );
-  return theme;
+  )
+  return theme
 }
 
-export default useCustomizeTheme;
+export default useCustomizeTheme

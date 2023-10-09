@@ -1,5 +1,5 @@
-import { Theme, Select, MenuItem, SelectChangeEvent, Paper, useTheme } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { Theme, Select, MenuItem, SelectChangeEvent, Paper, useTheme } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 // import { useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
@@ -29,7 +29,7 @@ interface CountryFilterProps {
 }
 
 function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
-  const classes = useStyles();
+  const classes = useStyles()
   const theme = useTheme()
   // const [region, setRegion] = useState('');
 
@@ -63,9 +63,9 @@ function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
         }}
         renderValue={(selected: string) => {
           if (!selected) {
-            return <em>Filter by Region</em>;
+            return <em>Filter by Region</em>
           }
-          return selected;
+          return selected
         }}
       >
         <MenuItem value={'Africa'}>Africa</MenuItem>
@@ -75,7 +75,7 @@ function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
         <MenuItem value={'Oceania'}>Oceania</MenuItem>
       </Select>
     </Paper>
-  );
+  )
 }
 
-export default CountryFilter;
+export default CountryFilter

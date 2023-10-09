@@ -1,7 +1,7 @@
-import { ThemeOptions, createTheme } from '@mui/material/styles';
-import { deepmerge } from '@mui/utils';
+import { ThemeOptions, createTheme } from '@mui/material/styles'
+import { deepmerge } from '@mui/utils'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { Theme } from '@emotion/react';
+import { Theme } from '@emotion/react'
 
 const colors = {
   darkModeElement: 'hsl(209, 23%, 22%)', // Dark Blue (Dark Mode Elements)
@@ -147,4 +147,4 @@ const lightTheme: Theme = createTheme(deepmerge(baseThemeConfig, {
 }))
 
 
-export { darkTheme, lightTheme };
+export { darkTheme, lightTheme }

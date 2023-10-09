@@ -3,24 +3,24 @@ import {
   RouterProvider,
   // Route,
   Outlet,
-} from "react-router-dom"
-import CountryList from "./pages/CountryList"
-import Country from "./pages/Country"
-import Header from "./components/Header"
-import { Paper } from "@mui/material"
-import { useTheme } from "@mui/material"
+} from 'react-router-dom'
+import CountryList from './pages/CountryList'
+import Country from './pages/Country'
+import Header from './components/Header'
+import { Paper } from '@mui/material'
+import { useTheme } from '@mui/material'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <CountryList />,
       },
       {
-        path: "/country/:code",
+        path: '/country/:code',
         element: <Country />,
       },
     ],
