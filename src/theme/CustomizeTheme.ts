@@ -84,7 +84,8 @@ const darkTheme: Theme = createTheme(deepmerge(baseThemeConfig, {
       main: colors.darkModeElement, // Dark Blue (Dark Mode Elements)
     },
     background: {
-      default: colors.darkModeBackground, // Very Dark Blue (Dark Mode Background)
+      default: colors.darkModeElement, // Very Dark Blue (Dark Mode Background)
+      main: colors.darkModeBackground
     },
     text: {
       primary: colors.darkModeTextAndLightModeElements, // White (Dark Mode Text)
@@ -113,6 +114,7 @@ const lightTheme: Theme = createTheme(deepmerge(baseThemeConfig, {
     },
     background: {
       default: colors.lightModeBackground, // Very Light Gray (Light Mode Background)
+      element: colors.darkModeTextAndLightModeElements,
     },
     text: {
       primary: colors.lightModeText, // Very Dark Blue (Light Mode Text)

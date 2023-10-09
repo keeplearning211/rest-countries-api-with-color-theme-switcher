@@ -1,4 +1,4 @@
-import { Box, Paper, Theme } from "@mui/material"
+import { Box, Theme } from "@mui/material"
 import makeStyles from '@mui/styles/makeStyles';
 import CountrySearch from "../components/CountrySearch";
 import CountryFilter from "../components/CountryFilter";
@@ -8,13 +8,16 @@ import { useGetAllCountriesQuery } from "../features/api/apiSlice";
 import { useMemo, useState } from "react";
 
 const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
+  container: {
     minHeight: "90vh",
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
     padding: theme.spacing(2, 8),
-    gap: theme.spacing(6)
+    gap: theme.spacing(6),
+    [theme.breakpoints.down('md')]: {
+      padding: theme.spacing(2, 2),
+    },
   },
   controlBox: {
     display: "flex",
@@ -27,6 +30,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "space-between",
     flexWrap: "wrap",
     gap: theme.spacing(9),
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      padding: theme.spacing(0, 4)
+    },
   }
 }));
 
@@ -71,12 +78,12 @@ function CountryList() {
   }
 
   return (
-    <Paper className={classes.paper}>
+    <Box className={classes.container}>
       <Box className={classes.controlBox}>
         <CountrySearch onSearch={handleSearch} />
         <CountryFilter onFilter={handleFilter} filterValue={filterValue} />
       </Box>
-      <Box className={classes.countriesList}>
+      <Box data-test-name="list-container" className={classes.countriesList}>
         {
           filteredCountries?.length && filteredCountries.map(country => (
             <Link to={`/country/${country.cca3}`} key={country.cca3}>
@@ -85,7 +92,7 @@ function CountryList() {
           ))
         }
       </Box>
-    </Paper>
+    </Box>
   )
 }
 export default CountryList

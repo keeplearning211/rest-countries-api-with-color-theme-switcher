@@ -6,9 +6,9 @@ import {
 } from "react-router-dom"
 import CountryList from "./pages/CountryList"
 import Country from "./pages/Country"
-import ThemeProvider from "./theme/ThemeProvider"
 import Header from "./components/Header"
 import { Paper } from "@mui/material"
+import { useTheme } from "@mui/material"
 
 const router = createBrowserRouter([
   {
@@ -28,13 +28,21 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+  const theme = useTheme()
   return (
-    <ThemeProvider>
-      <Paper >
-        <Header />
-        <Outlet />
-      </Paper>
-    </ThemeProvider>
+    <Paper sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'start',
+      gap: {
+        xs: theme.spacing(1),
+      },
+      minHeight: '100vh',
+      bgcolor: 'background.main'
+    }}>
+      <Header />
+      <Outlet />
+    </Paper>
   )
 }
 

@@ -20,6 +20,7 @@ function CountryCard({ country }: CountryCardProps) {
           sx: '100%',
           md: theme.spacing(33)
         },
+        maxWidth: '250px',
         height: {
           sx: 'auto',
           md: theme.spacing(46.75)
@@ -35,7 +36,7 @@ function CountryCard({ country }: CountryCardProps) {
           padding: 0,
           cursor: 'pointer',
         }}>
-        <img src={country.flags.svg} alt={country.name.common} style={{ width: '100%', height: 158 }} />
+        <img src={country.flags.svg} alt={country.name.common} style={{ width: '100%', height: 158, objectFit: 'cover' }} />
         <Box
           sx={{
             padding: theme.spacing(3, 2.5),

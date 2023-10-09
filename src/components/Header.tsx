@@ -28,9 +28,9 @@ function Header() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          // bgcolor: 'background.default',
+          bgcolor: 'background.default',
           // color: 'text.primary',
-          padding: '1.25rem 1rem'
+          padding: { xs: '1.25rem 1rem', md: '1.25rem 4rem' }
         }}
       >
         <Typography variant='h1'>Where in the world?</Typography>
