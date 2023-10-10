@@ -5,6 +5,8 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import { useGetCountryByCodeQuery } from '../features/api/apiSlice'
 import CountryInfoPiece from '../components/CountryInfoPiece'
 import BordersCountryInfoPiece from '../components/BordersCountryInfoPiece'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 function Country() {
   const navigate = useNavigate()
   const { code } = useParams()
@@ -45,7 +47,7 @@ function Country() {
         alignItems: 'center'
       }} >
         <Box sx={{ display: 'flex', width: { xs: '100%', md: '500px' }, height: { lg: '400px' } }}>
-          <img src={country?.flags.svg} alt={`Flag of ${country?.name.common}`} style={{ width: '100%' }} />
+          <LazyLoadImage src={country?.flags.svg} alt={`Flag of ${country?.name.common}`} style={{ width: '100%' }} />
         </Box>
         <Box data-test-name="info-group"
           sx={{

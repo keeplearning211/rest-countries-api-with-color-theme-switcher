@@ -1,6 +1,7 @@
 // components/CountryCard.tsx
 import { Box, Card, CardContent, Typography, useTheme } from '@mui/material'
 import { CountryGeneral } from '../type'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 interface CountryCardProps {
   country: CountryGeneral;
@@ -25,14 +26,13 @@ function CountryCard({ country }: CountryCardProps) {
         backgroundColor: 'background.default',
         borderRadius: theme.spacing(1),
       }}
-    // onClick={clickHandler}
     >
       <CardContent
         sx={{
           padding: 0,
           cursor: 'pointer',
         }}>
-        <img src={country.flags.svg} alt={country.name.common} style={{ width: '100%', height: 158, objectFit: 'cover' }} />
+        <LazyLoadImage src={country.flags.svg} alt={country.name.common} loading="lazy" style={{ width: '100%', height: 158, objectFit: 'cover' }} />
         <Box
           sx={{
             padding: theme.spacing(3, 3),

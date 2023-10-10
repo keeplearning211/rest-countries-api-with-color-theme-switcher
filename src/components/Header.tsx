@@ -1,7 +1,6 @@
 import { Box, IconButton, useTheme, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import ThemeContext from '../theme/themeContext'
-// import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import { COLOR_SCHEME } from '../theme/ThemeProvider'
@@ -38,7 +37,7 @@ function Header() {
           }}
           variant="h1">Where in the world?</Typography>
         <Box onClick={toggleMode}>
-          <IconButton sx={{ ml: 1 }} color="inherit">
+          <IconButton sx={{ ml: 1 }} color="inherit" aria-label="Change theme button">
             {theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <DarkModeIcon />}
           </IconButton>
           <Typography component="span" variant="body2" sx={{ textTransform: 'capitalize', fontWeight: 600 }}>
