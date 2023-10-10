@@ -28,7 +28,7 @@ function Header() {
           alignItems: 'center',
           justifyContent: 'space-between',
           bgcolor: 'background.default',
-          padding: { xs: '1.25rem 1rem', md: '20px 86px 20px 80px' }
+          padding: { xs: '1.25rem 1rem', md: '20px 81px 20px 80px' }
         }}
       >
         <Typography
@@ -40,7 +40,7 @@ function Header() {
           <IconButton sx={{ ml: 1 }} color="inherit" aria-label="Change theme button">
             {theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <DarkModeIcon />}
           </IconButton>
-          <Typography component="span" variant="body2" sx={{ textTransform: 'capitalize', fontWeight: 600 }}>
+          <Typography component="span" variant="body1" sx={{ textTransform: 'capitalize', fontWeight: 600 }}>
             {theme.palette.mode === 'dark' ? 'Light' : 'Dark'} mode
           </Typography>
         </Box>
