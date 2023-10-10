@@ -12,14 +12,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: 56,
     backgroundColor: `${theme.palette.background.default} !important`,
     [theme.breakpoints.up('md')]: {
-      width: 400,
+      width: 480,
+      paddingLeft: '20px'
     },
   },
   iconButton: {
     padding: theme.spacing(1),
   },
   inputBase: {
-    marginLeft: theme.spacing(1),
+    marginLeft: '14px',
     flex: 1,
     backgroundColor: theme.palette.background.default,
     '&>input&::placeholder': {
@@ -60,7 +61,7 @@ function CountrySearch({ onSearch }: CountrySearchProps) {
       </IconButton>
       <InputBase
         className={classes.inputBase}
-        placeholder="Search for a countries..."
+        placeholder="Search for a country..."
         inputProps={{ 'aria-label': 'Search for a countries...' }}
         value={inputValue}
         onChange={handleInputChange}

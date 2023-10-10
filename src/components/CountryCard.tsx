@@ -16,10 +16,10 @@ function CountryCard({ country }: CountryCardProps) {
           sx: '100%',
           md: theme.spacing(33)
         },
-        maxWidth: '250px',
+        maxWidth: '264px',
         height: {
           sx: 'auto',
-          md: theme.spacing(46.75)
+          md: theme.spacing(41.5)
         },
         padding: theme.spacing(0),
         backgroundColor: 'background.default',
@@ -35,16 +35,16 @@ function CountryCard({ country }: CountryCardProps) {
         <img src={country.flags.svg} alt={country.name.common} style={{ width: '100%', height: 158, objectFit: 'cover' }} />
         <Box
           sx={{
-            padding: theme.spacing(3, 2.5),
+            padding: theme.spacing(3, 3),
             display: 'grid',
-            gap: theme.spacing(3)
+            gap: theme.spacing(2)
           }}>
-          <Typography variant="h5" component="div">
+          <Typography component="p" sx={{ fontSize: '1.125rem', fontWeight: '600' }}>
             {country.name.common}
           </Typography>
           <Box sx={{
             display: 'grid',
-            gap: theme.spacing(1),
+            gap: theme.spacing(0.5),
           }}>
 
             <Typography variant="body2" color="text.secondary">

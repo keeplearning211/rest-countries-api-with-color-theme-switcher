@@ -10,7 +10,7 @@ const getColorScheme = (): ThemeType => {
   if (colorScheme === 'light' || colorScheme === 'dark')
     return colorScheme
   else
-    return 'dark'
+    return 'light'
 }
 
 const ThemeProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {

@@ -15,12 +15,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   select: {
     flex: 1,
     backgroundColor: theme.palette.background.default,
-    fontWeight: 600,
-    padding: theme.spacing(0, 2),
+    padding: '0 15px 0 10px',
     '& .MuiSelect-select': {
       paddingRight: '0px !important',
+      fontWeight: 300,
+      fontSize: '14px',
     },
   },
+  menuItem: {
+    fontWeight: '300 !important',
+    fontSize: '14px !important'
+  }
 }))
 
 interface CountryFilterProps {
@@ -31,12 +36,6 @@ interface CountryFilterProps {
 function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
   const classes = useStyles()
   const theme = useTheme()
-  // const [region, setRegion] = useState('');
-
-  // const handleRegionChange = (event: SelectChangeEvent<string>) => {
-  //   setRegion(event.target.value);
-  // };
-
 
   const handleRegionChange = (event: SelectChangeEvent<string>) => {
     onFilter(event.target.value)
@@ -47,32 +46,38 @@ function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
     >
       <Select
         className={classes.select}
-        IconComponent={() => <KeyboardArrowDownIcon sx={{ color: theme.palette.text.secondary }} />}
+        IconComponent={() =>
+          <KeyboardArrowDownIcon
+            sx={{
+              color: theme.palette.text.secondary,
+              width: '18px'
+            }} />
+        }
         value={filterValue}
         onChange={handleRegionChange}
         displayEmpty
         inputProps={{ 'aria-label': 'Filter by Region' }}
         MenuProps={{
           PaperProps: {
-            style: {
+            sx: {
               marginTop: theme.spacing(1),
               backgroundColor: theme.palette.background.default,
-              padding: theme.spacing(0, 2),
+              padding: theme.spacing(0, 1),
             },
           },
         }}
         renderValue={(selected: string) => {
           if (!selected) {
-            return <em>Filter by Region</em>
+            return 'Filter by Region'
           }
           return selected
         }}
       >
-        <MenuItem value={'Africa'}>Africa</MenuItem>
-        <MenuItem value={'Americas'}>Americas</MenuItem>
-        <MenuItem value={'Asia'}>Asia</MenuItem>
-        <MenuItem value={'Europe'}>Europe</MenuItem>
-        <MenuItem value={'Oceania'}>Oceania</MenuItem>
+        <MenuItem className={classes.menuItem} value={'Africa'}>Africa</MenuItem>
+        <MenuItem className={classes.menuItem} value={'Americas'}>Americas</MenuItem>
+        <MenuItem className={classes.menuItem} value={'Asia'}>Asia</MenuItem>
+        <MenuItem className={classes.menuItem} value={'Europe'}>Europe</MenuItem>
+        <MenuItem className={classes.menuItem} value={'Oceania'}>Oceania</MenuItem>
       </Select>
     </Paper>
   )

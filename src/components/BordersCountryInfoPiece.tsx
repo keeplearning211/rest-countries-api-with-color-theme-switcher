@@ -18,10 +18,10 @@ function BordersCountryInfoPiece({ codes }: BordersCountryInfoPieceProps) {
       flexWrap: 'wrap',
       alignItems: 'center'
     }}>
-      <Typography variant="body2" sx={{ fontWeight: 800 }}>Border Countries:</Typography>
+      <Typography variant="body1" >Border Countries:</Typography>
       <Box sx={{
         display: 'flex',
-        gap: 2,
+        gap: '10px',
         flexWrap: 'wrap',
       }}>
         {
@@ -46,7 +46,9 @@ function CountryChip({ code }: CountryChipProps) {
   return (
     <Link key={code} to={`/country/${code}`} >
       <Chip label={country?.name.common} sx={{
-        borderRadius: '4px'
+        borderRadius: '4px',
+        width: '99px',
+        height: '30px'
       }} />
     </Link>
   )

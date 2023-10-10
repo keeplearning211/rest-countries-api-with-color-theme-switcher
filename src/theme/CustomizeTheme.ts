@@ -12,6 +12,15 @@ const colors = {
   darkModeTextAndLightModeElements: 'hsl(0, 0%, 100%)' // White (Dark Mode Text & Light Mode Elements)
 }
 const baseThemeConfig: ThemeOptions = {
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1440,
+      xl: 1536,
+    },
+  },
   typography: {
     fontFamily: [
       'Nunito Sans',
@@ -34,7 +43,7 @@ const baseThemeConfig: ThemeOptions = {
     },
     body2: {
       fontSize: 14,
-      // fontWeight: 300,
+      fontWeight: 300,
     },
   },
   components: {
@@ -69,6 +78,7 @@ const baseThemeConfig: ThemeOptions = {
             color: colors.lightModeInput,
             opacity: 1,
             fontWeight: 300,
+            fontSize: '14px',
           },
         }
       },
@@ -138,7 +148,7 @@ const lightTheme: Theme = createTheme(deepmerge(baseThemeConfig, {
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          fontWeight: 600,
+          fontWeight: 300,
         }
       },
     },

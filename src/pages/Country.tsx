@@ -20,17 +20,17 @@ function Country() {
   return (
     <Box sx={{
       display: 'grid',
-      justifyContent: 'space-around',
-      gap: 12,
-      p: { xs: 4, md: 8 },
-      pt: 8,
+      justifyContent: 'start',
+      gap: { xs: 2, lg: 10 },
+      p: { xs: 4, md: '74px 78px' },
     }}>
       <Button sx={{
         display: 'flex',
-        gap: 0.5,
+        gap: 1,
         backgroundColor: 'background.default',
         color: 'text.primary',
-        width: 120,
+        width: 136,
+        padding: '6px 12px 6px 8px'
       }}
         onClick={() => navigate('/')}
       >
@@ -38,35 +38,36 @@ function Country() {
           color: 'text.secondary',
         }} /> Back
       </Button>
-
       <Box sx={{
         display: 'grid',
-        gridTemplateColumns: { xs: 'unset', md: '1fr 1fr' },
-        gap: { xs: 4, md: 16 },
+        gridTemplateColumns: { xs: 'unset', lg: '563px auto' },
+        gap: { xs: 4, lg: 17.75 },
         alignItems: 'center'
       }} >
-        <Box>
+        <Box sx={{ display: 'flex', width: { xs: '100%', md: '500px' }, height: { lg: '400px' } }}>
           <img src={country?.flags.svg} alt={`Flag of ${country?.name.common}`} style={{ width: '100%' }} />
         </Box>
         <Box data-test-name="info-group"
           sx={{
             display: 'grid',
-            pt: '48px',
-            gap: { xs: 3, md: 'unset' },
+            pt: { xs: 1, lg: '62px' },
+            gap: { xs: '54px', lg: '17px' },
             minHeight: '400px',
           }} >
-          <Typography sx={{ fontSize: '24px' }} variant="h1">{country?.name.common}</Typography>
+          <Typography sx={{ fontSize: '2rem', fontWeight: 800, lineHeight: 0 }} >{country?.name.common}</Typography>
           <Box data-test-name="info-piece-group"
             sx={{
               display: 'grid',
-              gap: '8px',
+              gap: { xs: 2, lg: '76px' },
               gridTemplateColumns: { xs: 'unset', md: '1fr 1fr' }
             }}>
             <Box data-test-name="info-peace-group-1"
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '16px',
+                justifyContent: 'start',
+                gap: '8px',
+                height: 170,
               }}>
               <CountryInfoPiece label="Native Name" value={country?.name.native} />
               <CountryInfoPiece label="Population" value={country?.population.toString()} />
@@ -77,7 +78,7 @@ function Country() {
             <Box sx={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '16px',
+              gap: '8px',
             }}>
               <CountryInfoPiece label="Top Level Domain" value={country?.topLevelDomain} />
               <CountryInfoPiece label="Currencies" value={country?.currencies.join(', ')} />

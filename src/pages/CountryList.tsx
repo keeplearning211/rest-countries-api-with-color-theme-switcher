@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-    padding: theme.spacing(2, 8),
+    padding: '40px 80px 16px 80px',
     gap: theme.spacing(6),
     [theme.breakpoints.down('md')]: {
       padding: theme.spacing(2, 2),
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    gap: theme.spacing(9),
+    gap: '79px 72px',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       padding: theme.spacing(0, 4)
@@ -85,11 +85,11 @@ function CountryList() {
       </Box>
       <Box data-test-name="list-container" className={classes.countriesList}>
         {
-          filteredCountries?.length && filteredCountries.map(country => (
+          filteredCountries?.length ? filteredCountries.map(country => (
             <Link to={`/country/${country.cca3}`} key={country.cca3}>
               <CountryCard country={country} />
             </Link>
-          ))
+          )) : null
         }
       </Box>
     </Box>
