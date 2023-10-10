@@ -25,7 +25,7 @@ function CountryCard({ country }: CountryCardProps) {
         },
         padding: theme.spacing(0),
         backgroundColor: 'background.default',
-        borderRadius: theme.spacing(1),
+        borderRadius: theme.spacing(0.5),
       }}
     >
       <CardContent
