@@ -6,6 +6,7 @@ import { useGetCountryByCodeQuery } from '../features/api/apiSlice'
 import CountryInfoPiece from '../components/CountryInfoPiece'
 import BordersCountryInfoPiece from '../components/BordersCountryInfoPiece'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { baseUrl } from '../AppWithRouter'
 
 function Country() {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ function Country() {
         width: 136,
         padding: '6px 12px 6px 8px'
       }}
-        onClick={() => navigate('/')}
+        onClick={() => navigate(`${baseUrl}`)}
       >
         <KeyboardBackspaceIcon sx={{
           color: 'text.secondary',

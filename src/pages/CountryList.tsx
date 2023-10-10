@@ -6,6 +6,7 @@ import CountryCard from '../components/CountryCard'
 import { Link } from 'react-router-dom'
 import { useGetAllCountriesQuery } from '../features/api/apiSlice'
 import { useMemo, useState } from 'react'
+import { baseUrl } from '../AppWithRouter'
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -86,7 +87,7 @@ function CountryList() {
       <Box data-test-name="list-container" className={classes.countriesList}>
         {
           filteredCountries?.length ? filteredCountries.map(country => (
-            <Link to={`/country/${country.cca3}`} key={country.cca3}>
+            <Link to={`${baseUrl}country/${country.cca3}`} key={country.cca3}>
               <CountryCard country={country} />
             </Link>
           )) : null

@@ -10,17 +10,19 @@ import Header from './components/Header'
 import { Paper } from '@mui/material'
 import { useTheme } from '@mui/material'
 
+export const baseUrl = '/rest-countries-api-with-color-theme-switcher/'
+
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: `${baseUrl}`,
     element: <App />,
     children: [
       {
-        path: '/',
+        path: `${baseUrl}`,
         element: <CountryList />,
       },
       {
-        path: '/country/:code',
+        path: `${baseUrl}country/:code`,
         element: <Country />,
       },
     ],

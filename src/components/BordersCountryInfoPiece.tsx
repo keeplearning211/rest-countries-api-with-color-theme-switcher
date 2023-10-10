@@ -1,6 +1,7 @@
 import { Box, Chip, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useGetCountryByCodeQuery } from '../features/api/apiSlice'
+import { baseUrl } from '../AppWithRouter'
 
 interface BordersCountryInfoPieceProps {
   codes: string[] | undefined;
@@ -44,7 +45,7 @@ interface CountryChipProps {
 function CountryChip({ code }: CountryChipProps) {
   const { data: country } = useGetCountryByCodeQuery(code)
   return (
-    <Link key={code} to={`/country/${code}`} >
+    <Link key={code} to={`${baseUrl}country/${code}`} >
       <Chip label={country?.name.common} sx={{
         borderRadius: '4px',
         width: '99px',
