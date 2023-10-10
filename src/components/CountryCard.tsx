@@ -2,6 +2,7 @@
 import { Box, Card, CardContent, Typography, useTheme } from '@mui/material'
 import { CountryGeneral } from '../type'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import CardCountryInfoPiece from './CardCountryInfoPiece'
 
 interface CountryCardProps {
   country: CountryGeneral;
@@ -39,23 +40,16 @@ function CountryCard({ country }: CountryCardProps) {
             display: 'grid',
             gap: theme.spacing(2)
           }}>
-          <Typography component="p" sx={{ fontSize: '1.125rem', fontWeight: '600' }}>
+          <Typography component="p" sx={{ fontSize: '1.125rem', fontWeight: '800' }}>
             {country.name.common}
           </Typography>
           <Box sx={{
             display: 'grid',
             gap: theme.spacing(0.5),
           }}>
-
-            <Typography variant="body2" color="text.secondary">
-              Population: {country.population}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Region: {country.region}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Capital: {country.capital}
-            </Typography>
+            <CardCountryInfoPiece label="Population" value={country.population} />
+            <CardCountryInfoPiece label="Region" value={country.region} />
+            <CardCountryInfoPiece label="Capital" value={country.capital} />
           </Box>
 
         </Box>

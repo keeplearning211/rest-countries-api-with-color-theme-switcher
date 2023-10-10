@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme } from '@mui/material'
+import { formatNumber } from '../app/ultils'
 
 interface InfoPieceProps {
   label: string;
@@ -11,10 +12,11 @@ function CountryInfoPiece({ label, value }: InfoPieceProps) {
     <Box sx={{
       display: 'flex',
       flexWrap: 'wrap',
-      gap: theme.spacing(0.5)
+      gap: theme.spacing(0.5),
+      color: 'text.secondary'
     }}>
       <Typography variant="body1">{label}:</Typography>
-      <Typography variant="body1" sx={{ fontWeight: 300 }}>{value}</Typography>
+      <Typography variant="body1" sx={{ fontWeight: 300 }}>{formatNumber(value)}</Typography>
     </Box>
   )
 }

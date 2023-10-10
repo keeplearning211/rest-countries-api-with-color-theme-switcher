@@ -128,7 +128,7 @@ const lightTheme: Theme = createTheme(deepmerge(baseThemeConfig, {
     },
     text: {
       primary: colors.lightModeText, // Very Dark Blue (Light Mode Text)
-      secondary: colors.lightModeInput
+      secondary: colors.lightModeText
     },
     action: {
       active: colors.darkModeTextAndLightModeElements, // White (Light Mode Elements)
