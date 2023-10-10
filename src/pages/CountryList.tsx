@@ -28,9 +28,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   countriesList: {
     display: 'flex',
-    justifyContent: 'space-between',
     flexWrap: 'wrap',
-    gap: '79px 72px',
+    gap: '79px 74px',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       padding: theme.spacing(0, 4)
