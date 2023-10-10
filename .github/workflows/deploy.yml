@@ -21,8 +21,10 @@ jobs:
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+        
+      - name: Force re-install
         run: npm install --force
-
+      
       - name: Build project
         run: npm run build
 
