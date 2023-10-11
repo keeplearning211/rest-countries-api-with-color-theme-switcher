@@ -33,7 +33,7 @@ function CountryCard({ country }: CountryCardProps) {
           padding: 0,
           cursor: 'pointer',
         }}>
-        <LazyLoadImage src={country.flags.svg} alt={country.name.common} loading="lazy" style={{ width: '100%', height: 158, objectFit: 'cover' }} />
+        <LazyLoadImage src={country.flags.svg} alt={country.name.common} style={{ width: '100%', height: 158, objectFit: 'cover' }} />
         <Box
           sx={{
             padding: theme.spacing(3, 3),

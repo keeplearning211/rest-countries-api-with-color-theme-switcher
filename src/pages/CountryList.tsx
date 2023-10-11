@@ -78,7 +78,7 @@ function CountryList() {
   }
 
   return (
-    <Box className={classes.container}>
+    <Box component="main" className={classes.container}>
       <Box className={classes.controlBox}>
         <CountrySearch onSearch={handleSearch} />
         <CountryFilter onFilter={handleFilter} filterValue={filterValue} />

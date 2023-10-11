@@ -21,7 +21,7 @@ function Country() {
   }
 
   return (
-    <Box sx={{
+    <Box component="main" sx={{
       display: 'grid',
       justifyContent: 'start',
       gap: { xs: 2, lg: 10 },
