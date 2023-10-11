@@ -2,6 +2,7 @@ import { Theme, Select, MenuItem, SelectChangeEvent, Paper, useTheme } from '@mu
 import { makeStyles } from '@mui/styles'
 // import { useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import { useState } from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -36,6 +37,7 @@ interface CountryFilterProps {
 function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
   const classes = useStyles()
   const theme = useTheme()
+  const [openSelect, setOpenSelect] = useState<boolean>(false)
 
   const handleRegionChange = (event: SelectChangeEvent<string>) => {
     onFilter(event.target.value)
@@ -50,9 +52,15 @@ function CountryFilter({ onFilter, filterValue }: CountryFilterProps) {
           <KeyboardArrowDownIcon
             sx={{
               color: theme.palette.text.secondary,
-              width: '18px'
+              width: '18px',
+              position: 'absolute',
+              right: 18,
+              pointerEvents: 'none !important',
+              transform: openSelect ? 'rotate(180deg)' : 'none'
             }} />
         }
+        onOpen={() => setOpenSelect(true)}
+        onClose={() => setOpenSelect(false)}
         value={filterValue}
         onChange={handleRegionChange}
         displayEmpty
